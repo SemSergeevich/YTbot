@@ -50,12 +50,14 @@ def download_media(url, mode):
             'outtmpl': f'{DOWNLOAD_DIR}/%(title)s.mp4',
         }
     
-    ydl_opts.update({
+ydl_opts.update({
         'noplaylist': True,
         'nocheckcertificate': True,
         'quiet': True,
         'no_warnings': True,
-        'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
+        # Добавляем использование OAuth
+        'username': 'oauth2',
+        'password': '',
     })
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
